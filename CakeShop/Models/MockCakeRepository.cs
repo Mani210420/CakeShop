@@ -9,7 +9,7 @@ namespace CakeShop.Models
             {
                 new Cake
                 {
-                    CakeId = 10,
+                    CakeId = 14,
                     Name = "Strawberry Delight Cake",
                     ShortDescription = "A soft sponge cake filled with fresh strawberries.",
                     LongDescription = "Our Strawberry Delight Cake is a delicious blend of sweet and tangy strawberries layered with soft vanilla sponge and whipped cream. Perfect for summer celebrations or as a refreshing treat.",
