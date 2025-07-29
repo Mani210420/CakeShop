@@ -1,4 +1,9 @@
+using CakeShop.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+builder.Services.AddScoped<ICakeRepository, MockCakeRepository>();
 
 builder.Services.AddControllersWithViews();
 
