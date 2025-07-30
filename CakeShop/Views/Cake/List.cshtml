@@ -3,9 +3,11 @@
 <h1>@Model.CurrentCategory</h1>
 @foreach(var cake in Model.Cakes)
 {
-    <div>
+    <div class="col">
+        <div class="card cake-card">
         <h2>@cake.Name</h2>
         <h3>@cake.Price.ToString("c")</h3>
         <h4>@cake.Category.CategoryName</h4>
+        </div>
     </div>
 }
