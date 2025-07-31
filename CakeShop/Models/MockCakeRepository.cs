@@ -16,7 +16,7 @@ namespace CakeShop.Models
                     AllerdyInfo = "Contains dairy, eggs, and gluten.",
                     Price = 19.99m,  
                     ImageUrl = "/images/cakes/strawberry-delight.jpg",
-                    ImageThumbnailUrl = "/images/cakes/thumbnails/strawberry-delight-thumb.jpg",
+                    ImageThumbnailUrl = "/Images/Cakes/Thumbnails/StrawberryCake.png",
                     IsCakeOfTheWeek = true,
                     InStock = true,
                     Category = _categoryRepository.AllCategories.ToList()[0],
@@ -31,7 +31,7 @@ namespace CakeShop.Models
                     AllerdyInfo = "Contains dairy, eggs, and gluten.",
                     Price = 24.99m,
                     ImageUrl = "/images/cakes/newyork-cheesecake.jpg",
-                    ImageThumbnailUrl = "/images/cakes/thumbnails/newyork-cheesecake-thumb.jpg",
+                    ImageThumbnailUrl = "/Images/Cakes/Thumbnails/CheeseCake.png",
                     IsCakeOfTheWeek = false,
                     InStock = true,
                     Category = _categoryRepository.AllCategories.ToList()[1]
@@ -45,7 +45,7 @@ namespace CakeShop.Models
                     AllerdyInfo = "Contains dairy, eggs, and gluten.",
                     Price = 22.49m,
                     ImageUrl = "/images/cakes/blueberry-bliss.jpg",
-                    ImageThumbnailUrl = "/images/cakes/thumbnails/blueberry-bliss-thumb.jpg",
+                    ImageThumbnailUrl = "/Images/Cakes/Thumbnails/BlueberryCake.png",
                     IsCakeOfTheWeek = false,
                     InStock = true,
                     Category = _categoryRepository.AllCategories.ToList()[2] // index 2 = "Seasonal Cakes"
@@ -59,7 +59,7 @@ namespace CakeShop.Models
                     AllerdyInfo = "Contains dairy, eggs, gluten, and may contain traces of nuts.",
                     Price = 25.99m,
                     ImageUrl = "/images/cakes/blackforest-cake.jpg",
-                    ImageThumbnailUrl = "/images/cakes/thumbnails/blackforest-cake-thumb.jpg",
+                    ImageThumbnailUrl = "/Images/Cakes/Thumbnails/BlackForest.png",
                     IsCakeOfTheWeek = true,
                     InStock = true,
                     Category = _categoryRepository.AllCategories.ToList()[0]  // index 0 = "Fruit Cake"
