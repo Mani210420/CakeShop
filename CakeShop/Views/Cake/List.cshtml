@@ -1,13 +1,24 @@
 ﻿@model CakeListViewModel
 
 <h1>@Model.CurrentCategory</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
 @foreach(var cake in Model.Cakes)
 {
     <div class="col">
         <div class="card cake-card">
-        <h2>@cake.Name</h2>
-        <h3>@cake.Price.ToString("c")</h3>
-        <h4>@cake.Category.CategoryName</h4>
+            <img src="@cake.ImageThumbnailUrl" class="card-img-top" alt="@cake.Name" />
+            <div class="card-body cake-button">
+                <h4 class="d-grid"></h4>
+                <div class="d-flex justify-content-between mt-2">
+                    <h2 class="text-start">
+                        <a class="cake-link">@cake.Name</a>
+                    </h2>
+                    <h5 class="text-nowrap">@cake.Price.ToString("c")</h5>
+                </div>
+            </div>        
         </div>
     </div>
 }
+</div>
