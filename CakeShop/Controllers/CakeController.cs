@@ -23,5 +23,13 @@ namespace CakeShop.Controllers
             return View(cakeListViewModel);
 
         }
+
+        public IActionResult Details(int id)
+        {
+            var cake = _cakerepository.GetCakeById(id);
+            if (cake == null) 
+                return NotFound();
+            return View(cake);
+        }
     }
 }

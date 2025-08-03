@@ -13,7 +13,7 @@
                 <h4 class="d-grid"></h4>
                 <div class="d-flex justify-content-between mt-2">
                     <h2 class="text-start">
-                        <a class="cake-link">@cake.Name</a>
+                        <a class="cake-link" asp-controller="Cake" asp-action="Details" asp-route-id="@cake.CakeId">@cake.Name</a>
                     </h2>
                     <h5 class="text-nowrap">@cake.Price.ToString("c")</h5>
                 </div>
