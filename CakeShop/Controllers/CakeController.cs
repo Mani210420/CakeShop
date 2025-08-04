@@ -19,7 +19,7 @@ namespace CakeShop.Controllers
         {
             //ViewBag.CurrentCategory = "Cheese Cake";
             //return View(_cakerepository.AllCakes);
-            CakeListViewModel cakeListViewModel = new CakeListViewModel(_cakerepository.AllCakes, "Cheese Cake");
+            CakeListViewModel cakeListViewModel = new CakeListViewModel(_cakerepository.AllCakes, "All Cakes");
             return View(cakeListViewModel);
 
         }
