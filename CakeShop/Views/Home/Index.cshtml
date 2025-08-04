@@ -1,23 +1,6 @@
 ﻿@model HomeViewModel
 
-<div id="MainImages" class="main slide" data-bs-ride="true">
-    <div class="main-indicators">
-        <button type="button" data-bs-target="#mainImages" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#mainImages" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#mainImages" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="main-inner">
-        <div class="main-item active">
-            <img src="~/Images/main1.jpg" class="d-block w-100" alt="main image 1" />
-        </div>
-        <div class="main-item">
-            <img src="~/Images/main2.jpg" class="d-block w-100" alt="main image 2" />
-        </div>
-        <div class="main-item">
-            <img src="~/Images/main3.jpg" class="d-block w-100" alt="main image 3" />
-        </div>
-    </div>
-</div>
+<partial name="_Carousel" />
 
 <div class="text-center">
     <img src="~/Images/logo.png" class="logo-mark mx-auto" />
@@ -28,22 +11,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach(var cake in Model.CakesOfTheWeek)
             {
-                <div class="col">
-                    <div class="card cake-card">
-                        <img src="@cake.ImageThumbnailUrl" class="card-img-top" alt="@cake.Name" />
-                        <div class="card-body cake-button">
-                            <h4 class="d-grid"></h4>
-                            <div class="d-flex justify-content-between mt-4">
-                                <h2 class="text-start">
-                                    <a asp-controller="Cake" asp-action="Details" asp-route-id="@cake.CakeId"></a>
-                                </h2>
-                                <h5 class="text-nowrap">
-                                    @cake.Price.ToString("c")
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_CakeCard" model="cake" />
             }
         </div>
     </div>

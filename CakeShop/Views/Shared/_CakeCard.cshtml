@@ -1,0 +1,18 @@
+﻿@model Cake
+
+<div class="col">
+    <div class="card cake-card">
+        <img src="@Model.ImageThumbnailUrl" class="card-img-top" alt="@Model.Name" />
+        <div class="card-body cake-button">
+            <h4 class="d-grid"></h4>
+            <div class="d-flex justify-content-between mt-4">
+                <h2 class="text-start">
+                    <a asp-controller="Cake" asp-action="Details" asp-route-id="@Model.CakeId" class="cake-link">@Model.Name</a>
+                </h2>
+                <h5 class="text-nowrap">
+                    @Model.Price.ToString("c")
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>

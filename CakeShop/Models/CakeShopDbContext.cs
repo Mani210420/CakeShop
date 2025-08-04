@@ -11,5 +11,6 @@ namespace CakeShop.Models
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cake> Cakes {  get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }
