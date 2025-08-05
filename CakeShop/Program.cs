@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICakeRepository, CakeRepository>();
 
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CakeShopDbContext>(options =>
 {
@@ -16,6 +20,7 @@ builder.Services.AddDbContext<CakeShopDbContext>(options =>
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseSession();
 
 if (app.Environment.IsDevelopment())
 {
