@@ -7,6 +7,10 @@
 <div class="row gx-5">
     <img alt="@Model.Name" src="@Model.ImageThumbnailUrl" class="img-fluid col-5" />
     <div class="col-7">
+        <a class="btn btn-primary"
+           asp-controller="ShoppingCart"
+           asp-action="AddToShoppingCart"
+           asp-route-cakeId="@Model.CakeId">+ Add to Cart</a>
         <h4>@Model.ShortDescription</h4>
         <p>@Model.LongDescription</p>
         <h3 class="pull-right">@Model.Price.ToString("c")</h3>
