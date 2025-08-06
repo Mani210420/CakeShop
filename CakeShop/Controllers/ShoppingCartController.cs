@@ -1,4 +1,5 @@
 ﻿using CakeShop.Models;
+using CakeShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CakeShop.Controllers
@@ -14,9 +15,32 @@ namespace CakeShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
-            return View();
-        }*/
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+            var shoppingCartViewModel = new ShoppingCartViewModel(_shoppingCart, _shoppingCart.GetShoppingCartTotal());
+            return View(shoppingCartViewModel);
+        }
+
+        public RedirectToActionResult AddToShoppingCart(int cakeId)
+        {
+            var selectedCake = _cakeRepository.AllCakes.FirstOrDefault(c => c.CakeId == cakeId);
+            if (selectedCake != null)
+            {
+                _shoppingCart.AddToCart(selectedCake);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult RemoveFromShoppingCart(int cakeId) 
+        {
+            var deleteCake = _cakeRepository.AllCakes.FirstOrDefault(c =>c.CakeId == cakeId);
+            if(deleteCake != null)
+            {
+                _shoppingCart.RemoveFromCart(deleteCake);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

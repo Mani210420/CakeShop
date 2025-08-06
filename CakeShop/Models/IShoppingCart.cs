@@ -4,7 +4,7 @@
     {
         void AddToCart(Cake cake);
         int RemoveFromCart(Cake cake);
-        List<ShoppingCartItem> shoppingCartItems();
+        List<ShoppingCartItem> GetShoppingCartItems();
         void ClearCart();
         decimal GetShoppingCartTotal();
         List<ShoppingCartItem> ShoppingCartItems { get; set; }

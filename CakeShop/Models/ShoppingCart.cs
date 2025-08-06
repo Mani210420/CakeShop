@@ -17,7 +17,7 @@ namespace CakeShop.Models
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
-            ISession? session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext?.Session;
+            ISession? session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext?.Session;
 
             CakeShopDbContext context = services.GetService<CakeShopDbContext>() ?? throw new Exception("Error Initializing");
 
@@ -82,7 +82,7 @@ namespace CakeShop.Models
             return total;
         }
 
-        public List<ShoppingCartItem> shoppingCartItems()
+        public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? _cakeShopDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId).Include(s => s.Cake).ToList();
         }
