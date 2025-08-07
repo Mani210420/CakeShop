@@ -1,0 +1,17 @@
+﻿@model ShoppingCartViewModel
+
+@if(Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm0 2.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM17 18c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zm0 2.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM7.16 14l.84-2h7.45c.75 0 1.41-.41 1.75-1.03l3.24-6.01A.998.998 0 0019.5 4h-15l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 14.37 5.48 16 7 16h12v-2H7.16z" />
+                </svg>
+            </a>
+            <span id="cart-status">
+                @Model.ShoppingCart.ShoppingCartItems.Count
+            </span>
+        </li>
+    </ul>
+}
