@@ -15,13 +15,31 @@ namespace CakeShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public IActionResult List()
+        /*public IActionResult List()
         {
             //ViewBag.CurrentCategory = "Cheese Cake";
             //return View(_cakerepository.AllCakes);
             CakeListViewModel cakeListViewModel = new CakeListViewModel(_cakerepository.AllCakes, "All Cakes");
             return View(cakeListViewModel);
 
+        }*/
+
+        public IActionResult List(string category)
+        {
+            IEnumerable<Cake> cakes;
+            string? currentCategory;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                cakes = _cakerepository.AllCakes.OrderBy(c => c.CakeId);
+                currentCategory = "All Cakes";
+            }
+            else
+            {
+                cakes = _cakerepository.AllCakes.Where(c => c.Category.CategoryName == category).OrderBy(c => c.CakeId);
+                currentCategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+            return View(new CakeListViewModel(cakes, category));
         }
 
         public IActionResult Details(int id)
