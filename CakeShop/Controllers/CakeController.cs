@@ -24,7 +24,7 @@ namespace CakeShop.Controllers
 
         }*/
 
-        public IActionResult List(string category)
+        public ViewResult List(string category)
         {
             IEnumerable<Cake> cakes;
             string? currentCategory;
