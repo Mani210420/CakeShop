@@ -26,7 +26,7 @@ namespace CakeShop.Models
 
         public IEnumerable<Cake> SearchCake(string searchQuery)
         {
-            throw new NotImplementedException();
+            return _cakeShopDbContext.Cakes.Where(c => c.Name.Contains(searchQuery));
         }
     }
 }
