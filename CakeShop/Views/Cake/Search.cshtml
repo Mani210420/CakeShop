@@ -1,0 +1,40 @@
+﻿<div class="my-5">
+    <h3 class="mb-4">
+        Enter your search query
+    </h3>
+    <input id="txtCakeName" type="text" />
+    <button id="searchButton" class="btn btn-secondary">Search</button>
+</div>
+<table id="tableCakes" cellpadding="0" cellspacing="0">
+    <tbody></tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(function(){
+            var searchQuery = $.trim($("#txtCakeName").val());
+            $("table tbody").html("");
+            $.ajax({
+                type: "POST",
+                url: "/api/search",
+                data: "\"" + searchQuery +"\"",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(cakes) {
+                    var table = $("tableCakes");
+                    table.find("tr:not(:first)").remove();
+                    $.each(cakes, function(i, cake) {
+                        $("tbody").append($("<tr>"));
+                        appendElement = $("tbody tr").last();
+                        appendElement.append($("<td>").html('<img src="' + cake.imageThumbnailUrl + '" width="250" class="rounded m-2">'));
+                        appendElement.append($("<td>").html('<h2><a href="/cake/details/'+ cake.cakeId + '"class="cake-link">' + cake.name + '</a></h2>'));
+                        appendElement.append($("<td>").html(cake.price));
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr)
+                }
+            });
+        });
+    });
+</script>

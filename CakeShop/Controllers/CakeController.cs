@@ -49,5 +49,10 @@ namespace CakeShop.Controllers
                 return NotFound();
             return View(cake);
         }
+
+        public IActionResult Search()
+        {
+            return View();
+        }
     }
 }
