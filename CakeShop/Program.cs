@@ -1,4 +1,5 @@
 using CakeShop.Models;
+using CakeShop.App;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -19,6 +20,8 @@ builder.Services.AddControllersWithViews()
     });
 
 builder.Services.AddRazorPages();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+
 builder.Services.AddDbContext<CakeShopDbContext>(options =>
 {
     options.UseSqlServer(
@@ -41,6 +44,14 @@ app.MapDefaultControllerRoute();
 //app.MapControllerRoute(
 //    name: "default",
 //    pattern: "{controller=Home}//{action=Index}//{id}");
+
+app.UseAntiforgery();
+
 app.MapRazorPages();
+
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+
+
 DbInitializer.Seed(app);
+
 app.Run();
