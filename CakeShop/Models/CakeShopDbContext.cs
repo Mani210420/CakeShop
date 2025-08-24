@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace CakeShop.Models
 {
-    public class CakeShopDbContext : DbContext
+    public class CakeShopDbContext : IdentityDbContext
     {
         public CakeShopDbContext(DbContextOptions<CakeShopDbContext> options) : base(options)
         {

@@ -1,9 +1,11 @@
-using CakeShop.Models;
 using CakeShop.App;
+using CakeShop.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("CakeShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'CakeShopDbContextConnection' not found.");
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICakeRepository, CakeRepository>();
@@ -24,9 +26,11 @@ builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
 builder.Services.AddDbContext<CakeShopDbContext>(options =>
 {
-    options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:CakeShopDbContextConnection"]);
+    //options.UseSqlServer(builder.Configuration["ConnectionStrings:CakeShopDbContextConnection"]);
+    options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CakeShopDbContext>();
 
 //builder.Services.AddControllers();
 
@@ -34,6 +38,8 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 app.UseSession();
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
